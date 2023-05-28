@@ -1,0 +1,140 @@
+<!--file:///C:/Users/Admin/Desktop/ASSIGNCSC574/ASSIGNpayment.html-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Page</title>
+  <style>
+    /* CSS styles for the page */
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("paymentbckgrnd.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .product {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="number"] {
+      width: 50px;
+    }
+    .total-price {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Payment Page</h1>
+
+  <form id="payment-form">
+    <div class="product">
+      <label>
+        Orange - $0.99
+      </label>
+      Quantity: <input type="number" name="quantity[]" min="0" value="0">
+      <input type="hidden" name="prices[]" value="0.99">
+    </div>
+
+    <div class="product">
+      <label>
+        Tangerine - $0.99
+      </label>
+      Quantity: <input type="number" name="quantity[]" min="0" value="0">
+      <input type="hidden" name="prices[]" value="0.99">
+    </div>
+
+    <div class="product">
+      <label>
+        Red Apple - $1.00
+      </label>
+      Quantity: <input type="number" name="quantity[]" min="0" value="0">
+      <input type="hidden" name="prices[]" value="1.00">
+    </div>
+
+    <div class="product">
+      <label>
+        Green Apple - $1.00
+      </label>
+      Quantity: <input type="number" name="quantity[]" min="0" value="0">
+      <input type="hidden" name="prices[]" value="1.00">
+    </div>
+
+    <div class="product">
+      <label>
+        Green Pineapple - $5.00
+      </label>
+      Quantity: <input type="number" name="quantity[]" min="0" value="0">
+      <input type="hidden" name="prices[]" value="5.00">
+    </div>
+
+    <div class="product">
+      <label>
+        Sweet Pineapple - $5.00
+      </label>
+      Quantity: <input type="number" name="quantity[]" min="0" value="0">
+      <input type="hidden" name="prices[]" value="5.00">
+    </div>
+
+    <label>Phone Number:</label>
+    <input type="text" name="phone" id="phone">
+
+    <button type="button" onclick="calculateTotal()">Done</button>
+    <button type="button" onclick="proceedToPayInfo()">Proceed</button>
+  </form>
+
+  <div id="total-price" class="total-price"></div>
+
+  <script>
+    function calculateTotal() {
+      var form = document.getElementById("payment-form");
+      var quantities = form.querySelectorAll('input[name="quantity[]"]');
+      var prices = form.querySelectorAll('input[name="prices[]"]');
+      var totalPrice = 0;
+
+      // Get the phone number value
+      var phoneNumber = document.getElementById("phone").value;
+
+      // Check if the phone number is empty
+      if (phoneNumber === "") {
+        alert("Please enter your phone number!");
+        return; // Stop further execution
+      }
+
+      for (var i = 0; i < quantities.length; i++) {
+        var quantity = parseInt(quantities[i].value) || 0; // Use 0 if the value is empty
+        var price = parseFloat(prices[i].value);
+        totalPrice += price * quantity;
+      }
+
+      var totalPriceElement = document.getElementById("total-price");
+      totalPriceElement.textContent = "Total Price: $" + totalPrice.toFixed(2);
+    }
+
+    function proceedToPayInfo() {
+      var form = document.getElementById("payment-form");
+      var quantities = form.querySelectorAll('input[name="quantity[]"]');
+      var isAnyQuantityEmpty = false;
+
+      for (var i = 0; i < quantities.length; i++) {
+        if (quantities[i].value === "") {
+          isAnyQuantityEmpty = true;
+          break;
+        }
+      }
+
+      if (isAnyQuantityEmpty) {
+        alert("Please enter a value for your order!");
+      } else {
+        window.location.href = "file:///C:/Users/Admin/Desktop/ASSIGNCSC574/ASSIGNpayinfo.html";
+      }
+    }
+  </script>
+</body>
+</html>
+

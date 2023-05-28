@@ -1,0 +1,47 @@
+<!-- file:///C:/Users/Admin/Desktop/ASSIGNCSC574/ASSIGNpayinfo.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Information</title>
+  <style>
+    /* CSS styles for the page */
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("paymentbckgrnd.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .payment-info {
+      margin-top: 20px;
+    }
+    h2, p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Payment Information</h1>
+
+  <div class="payment-info">
+    <h2>Payment Details</h2><br>
+    <p>Please make payment to the following account:</p><br>
+    <p>MUHAMMAD FAKHRULLAH BIN AHMAD SUBKI</p>
+    <p>Account Number: 02039024905240</p>
+    <p>Bank: BANK ISLAM</p>
+    <br>
+
+    <!-- QR code image -->
+    <img src="qrcodepayment.jpg" alt="QR Code" width="200" height="200">
+  </div>
+
+  <button type="button" onclick="redirectToEndingPage()">Done</button>
+
+  <script>
+    function redirectToEndingPage() {
+      window.location.href = "file:///C:/Users/Admin/Desktop/ASSIGNCSC574/ASSIGNending.html";
+    }
+  </script>
+</body>
+</html>
